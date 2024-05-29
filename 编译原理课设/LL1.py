@@ -78,6 +78,7 @@ tool1={
     "E":"E"
 }
 reserved_process=[
+    "program",
     "param",
     "var-declaration",
     "fun-declaration",
@@ -87,6 +88,28 @@ reserved_process=[
     "param",
     "compound-stmt",
     "selection-stmt",
+    "ID",#标识符
+    "NUM",#数字
+    "COM",# /**/
+    "INT",# INT
+    "RETURN",#return
+    "VOID",#void
+    "WHILE",#while
+    "OP",
+    "call"
+]
+OP=[
+    "ADD",#加 +
+    "SUB",#减 -
+    "MUL",#乘 *
+    "DIV",#除 /
+    "LT",# <
+    "LE",# <=
+    "GT",# >
+    "GE",# >=
+    "EQ",# ==
+    "ASSIGN",# =
+    "UNEQ",# !=
 ]
 #产生式集合
 def get_production_list(file_path):
