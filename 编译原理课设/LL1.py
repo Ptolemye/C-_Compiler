@@ -92,11 +92,11 @@ reserved_process=[
     "NUM",#数字
     "COM",# /**/
     "INT",# INT
-    "RETURN",#return
+    "return-stmt",#return
     "VOID",#void
     "WHILE",#while
     "OP",
-    "call"
+    "arg-list"
 ]
 OP=[
     "ADD",#加 +

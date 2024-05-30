@@ -94,16 +94,33 @@ while True:
 
 # 分析树化为语法树
 to_delete=[]
+
 def OP_up(tree, node_id):
     node = tree.get_node(node_id)
     if node:
+        # if node.tag in OP:
+        #     parent_id = node.predecessor(tree.identifier)
+        #     parent_node=tree.get_node(parent_id)
+        #     g_parent_id=parent_node.predecessor(tree.identifier)
+        #     g_parent_node = tree.get_node(g_parent_id)
+        #     gg_parent_id = g_parent_node.predecessor(tree.identifier)
+        #     gg_parent_node = tree.get_node(gg_parent_id)
+        #     gg_parent_node.tag='OP'
+        #     gg_parent_node.data=node.data
+
         if node.tag in OP:
+            t = 0
             parent_id = node.predecessor(tree.identifier)
             parent_node=tree.get_node(parent_id)
-            g_parent_id=parent_node.predecessor(tree.identifier)
-            g_parent_node = tree.get_node(g_parent_id)
-            g_parent_node.tag='OP'
-            g_parent_node.data=node.data
+            if node.tag in ["SUB","ADD","EQ"]:
+                t= 3
+            else:
+                t=2
+            for i in range(t):
+                parent_id = parent_node.predecessor(tree.identifier)
+                parent_node = tree.get_node(parent_id)
+            parent_node.tag = 'OP'
+            parent_node.data=node.data
         for child in tree.children(node.identifier):
             OP_up(tree, child.identifier)
 def Get_to_delete(tree, node_id):
